@@ -20,8 +20,9 @@
   },
   "homepage": "https://github.com/alvaroHernandez/watchsync#readme",
   "dependencies": {
-    "firebase": "^7.12.0",
+    "@firebase/app": "^0.6.0",
     "firebase-admin": "^8.10.0",
+    "http2": "^3.3.7",
     "next": "^9.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
