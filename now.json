@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {
+      "GCLOUD_CREDENTIALS": "@gcloud_credentials"
+    }
+  }
+}
