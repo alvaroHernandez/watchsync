@@ -1,5 +1,5 @@
 # watchsync
-g==================
+==================
 
 This project is to be able to share a movie with other in the same room and to sinchronize the content with everyone.
 
