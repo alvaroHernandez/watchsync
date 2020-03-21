@@ -19,3 +19,8 @@ npm run dev
 ```
 
 Then point your browser to `http://localhost:3000`.
+<<<<<<< HEAD
+=======
+
+Made with love by Team 53
+>>>>>>> edit readme
