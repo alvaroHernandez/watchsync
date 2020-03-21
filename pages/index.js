@@ -1,7 +1,3 @@
-export default function Index() {
-    return (
-        <div>
-            <p>watchsync</p>
-        </div>
-    );
-}
+import MovieList from "../src/components/MoviesList"
+
+export default MovieList
