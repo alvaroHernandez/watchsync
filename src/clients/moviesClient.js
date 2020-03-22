@@ -6,6 +6,7 @@ export default class MoviesClient {
 	}
 
 	getMovie(fileId) {
+		console.info("Movies Client: retrieving movie with fileId ", fileId)
 		return fetch(`${this.MOVIE_PATH}${fileId}`)
 			.then((result) => result.json())
 			.then((json) => json)
