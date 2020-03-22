@@ -2,20 +2,25 @@ const db = require('../../../../../lib/db')
 const escape = require('sql-template-strings')
 
 export default async (req, res) => {
+    console.log("Rooms API: Request received: ",req);
     try{
         if (req.method === 'POST') {
             const rooms = await db.query(escape`
           SELECT uuid from rooms
           WHERE uuid = ${req.query.roomId}
         `)
-            if(rooms .length === 0){
+            console.log("Rooms API: rooms query result", rooms);
+            if(rooms.length === 0){
+                console.log("Rooms API: room doesn't exist, creating");
                 const rooms = await db.query(escape`
               INSERT INTO rooms (uuid,movieUrl) VALUES (${req.query.roomId},${req.query.movieUrl})
             `)
 
                 if(rooms.error){
+                    console.log("Rooms API: room have error doesn't exist, creating");
                     res.status(500).json( { error : rooms.error } )
                 }else{
+                    console.log("Rooms API: room created", rooms);
                     res.status(201).json({ rooms })
                 }
             }else{
