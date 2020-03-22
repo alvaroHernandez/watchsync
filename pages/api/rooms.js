@@ -3,8 +3,8 @@ const escape = require('sql-template-strings')
 
 module.exports = async (req, res) => {
     const rooms = await db.query(escape`
-      SELECT *
-      FROM rooms
+      UPDATE rooms set hostId = ${req.query.hostId}
+      WHERE uuid = ${req.query.roomId}
     `)
     res.status(200).json({ rooms })
 }
