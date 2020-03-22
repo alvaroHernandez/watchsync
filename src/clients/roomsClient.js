@@ -22,14 +22,15 @@ export default class RoomsClient {
 	}
 
 	createIfDoesNotExists(roomId,movieUrl){
+		console.log("Rooms Client: attempt to create room: ",{ roomId,movieUrl} );
 		if(!roomId || !movieUrl){
-			return;
+			console.log("Rooms Client: Invalid parameters");
 		}
 		return fetch(`${this.ROOM_PATH}${roomId}/movie/${movieUrl}`,
 			{
 				method: 'post',
 				body: JSON.stringify({})
 			})
-			.then((result) => Promise.resolve(result.status))
+			.then((result) => result.status)
 	}
 }

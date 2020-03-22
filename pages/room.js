@@ -13,9 +13,11 @@ const Room = () => {
     //scrapping
     useEffect(() => {
         if(roomId && movieUrl){
-            const createResponse = roomsClient.createIfDoesNotExists(roomId,movieUrl).then((response)=>{
-                require('../lib/peer');
+            require('../lib/peer');
+            roomsClient.createIfDoesNotExists(roomId,movieUrl).then((response)=>{
+                console.log("Room Page: creation response: ", response );
                 if(response === 201){
+                    console.log("Room Page: room created, instantiating peer ");
                     const peer = new Peer();
 
                     peer.on('connection', function(conn) {
@@ -28,6 +30,7 @@ const Room = () => {
                         roomsClient.updateHostId(roomId,movieUrl,id);
                     });
                 }else if(response === 200){
+                    console.log("Room Page: room already exist");
                     const peer = new Peer();
                     roomsClient.getHostId(roomId,movieUrl).then( (hostId)=>{
                         console.log("Attempting to connect with host: ", hostId);
