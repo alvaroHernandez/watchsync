@@ -12,7 +12,7 @@ export default async (req, res) => {
         `)
             console.log("Rooms API: rooms query result", rooms);
             if(rooms.error){
-                console.log("Rooms API: room have error doesn't exist, creating");
+                console.error("Rooms API: Error getting rooms");
                 return res.status(500).json( { error : rooms.error } )
             }
             if(rooms.length === 0){
