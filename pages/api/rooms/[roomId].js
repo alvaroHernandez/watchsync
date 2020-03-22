@@ -5,6 +5,7 @@ export default async (req, res) => {
     console.log("Rooms API: Request received: ",req.query);
     try{
         if (req.method === 'POST') {
+            console.log("Rooms API: creating room in database", req.query.roomId);
             const rooms = await db.query(escape`
           SELECT uuid from rooms
           WHERE uuid = ${req.query.roomId}
