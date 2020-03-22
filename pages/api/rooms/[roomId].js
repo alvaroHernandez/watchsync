@@ -2,7 +2,7 @@ const db = require('../../../lib/db')
 const escape = require('sql-template-strings')
 
 export default async (req, res) => {
-    console.log("Rooms API: Request received: ",req);
+    console.log("Rooms API: Request received: ",req.query);
     try{
         if (req.method === 'POST') {
             const rooms = await db.query(escape`
