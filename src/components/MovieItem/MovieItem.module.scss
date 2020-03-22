@@ -1,10 +1,11 @@
 $itemsWidth: 165px;
-.movieItem{
+.movie-item{
   width: $itemsWidth;
   display: block;
   background: white;
   padding-bottom: 30px;
   margin-right: 10px;
+  min-width: 150px;
 
   .image-container{
     position: relative;
@@ -49,7 +50,6 @@ $itemsWidth: 165px;
   }
 
   .information{
-
     padding: 10px;
 
     .title{

@@ -1,0 +1,24 @@
+$itemsWidth: 155px;
+.container{
+  display: flex;
+  justify-content: center;
+  width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.movies-scroll{
+  display: flex;
+  overflow: scroll;
+}
+
+.loader-container{
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  align-items: center;
+  height: 200px;
+}
+
+.box{
+  width: 100%;
+}
