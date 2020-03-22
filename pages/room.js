@@ -2,12 +2,11 @@ import { useRouter } from 'next/router'
 import React, {useEffect} from 'react';
 import Link from 'next/link'
 
-import RoomsClient from '../../src/clients/roomsClient'
+import RoomsClient from '../src/clients/roomsClient'
 
 const Room = () => {
     const router = useRouter()
-    const { roomId, movieUrl } = router.query
-    console.log(router.query);
+    const { id : roomId, movieUrl } = router.query
 
     const roomsClient = new RoomsClient();
 
@@ -15,7 +14,7 @@ const Room = () => {
     useEffect(() => {
         if(roomId && movieUrl){
             const createResponse = roomsClient.createIfDoesNotExists(roomId,movieUrl).then((response)=>{
-                require('../../lib/peer');
+                require('../lib/peer');
                 if(response === 201){
                     const peer = new Peer();
 
@@ -31,10 +30,10 @@ const Room = () => {
                 }else if(response === 200){
                     const peer = new Peer();
                     roomsClient.getHostId(roomId,movieUrl).then( (hostId)=>{
-                        console.log("attempting to connect with host: ", hostId);
+                        console.log("Attempting to connect with host: ", hostId);
                         const conn = peer.connect(hostId);
                         conn.on('open', function() {
-                            console.log("connected with host: ", hostId);
+                            console.log("Connected with host: ", hostId);
                             // Receive messages
                             conn.on('data', function(data) {
                                 console.log('Received', data);

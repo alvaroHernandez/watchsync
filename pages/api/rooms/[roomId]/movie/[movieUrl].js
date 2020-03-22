@@ -2,14 +2,12 @@ const db = require('../../../../../lib/db')
 const escape = require('sql-template-strings')
 
 export default async (req, res) => {
-    console.log(req.query);
     if (req.method === 'POST') {
         const rooms = await db.query(escape`
           SELECT uuid from rooms
           WHERE uuid = ${req.query.roomId}
         `)
         if(rooms .length === 0){
-            console.log("empty");
             const rooms = await db.query(escape`
               INSERT INTO rooms (uuid,movieUrl) VALUES (${req.query.roomId},${req.query.movieUrl})
             `)

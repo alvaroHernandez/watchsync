@@ -1,7 +1,7 @@
 import MovieItem from "../MovieItem/MovieItem";
 import styles from './MovieList.module.scss'
 
-const MovieList  = () =>  (
+const MovieList  = ( { movies }) =>  (
     <div className={styles.container}>
         <div className={styles.box}>
             <div>
@@ -9,22 +9,7 @@ const MovieList  = () =>  (
             </div>
             <div>
                 <div className={styles["movies-scroll"]}>
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
-                    <MovieItem />
+                    { movies.map((movie) => <MovieItem key={movie.roomId} movie={movie}/>) }
                 </div>
             </div>
         </div>
