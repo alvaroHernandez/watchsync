@@ -29,10 +29,6 @@ export default async (req, res) => {
         `)
         res.status(201).json({ rooms })
     }else if (req.method === 'GET') {
-        await db.query(escape`
-          UPDATE rooms set guestId = ${req.query.guestId}
-          WHERE uuid = ${req.query.roomId}
-        `)
         const rooms = await db.query(escape`
           SELECT hostId from rooms
           WHERE uuid = ${req.query.roomId}
