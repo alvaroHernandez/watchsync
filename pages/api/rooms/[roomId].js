@@ -11,6 +11,10 @@ export default async (req, res) => {
           WHERE uuid = ${req.query.roomId}
         `)
             console.log("Rooms API: rooms query result", rooms);
+            if(rooms.error){
+                console.log("Rooms API: room have error doesn't exist, creating");
+                return res.status(500).json( { error : rooms.error } )
+            }
             if(rooms.length === 0){
                 console.log("Rooms API: room doesn't exist, creating");
                 const rooms = await db.query(escape`
