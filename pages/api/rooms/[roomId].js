@@ -34,11 +34,12 @@ export default async (req, res) => {
         `)
             res.status(201).json({ rooms })
         }else if (req.method === 'GET') {
-            console.log("Rooms API: Geeting room infor", req.query.roomId);
+            console.log("Rooms API: Geeting room information", req.query.roomId);
             const [room]= await db.query(escape`
             SELECT hostId from rooms
             WHERE uuid = ${req.query.roomId}
             `)
+            console.log("Room API: room retrieved (raw): ", room);
             console.log("Room API: room retrieved, ", JSON.parse(JSON.stringify( { room } )) );
             res.status(201).json( JSON.parse(JSON.stringify({ room } )));
         }
