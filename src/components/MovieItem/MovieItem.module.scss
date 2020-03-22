@@ -1,11 +1,9 @@
-$itemsWidth: 165px;
 .movie-item{
-  width: $itemsWidth;
+  min-width: 230px;
   display: block;
   background: white;
   padding-bottom: 30px;
   margin-right: 10px;
-  min-width: 150px;
 
   .image-container{
     position: relative;
@@ -45,8 +43,7 @@ $itemsWidth: 165px;
   }
 
   .thumbnail{
-    height: 230px;
-    width: $itemsWidth;
+    width: 100%;
   }
 
   .information{

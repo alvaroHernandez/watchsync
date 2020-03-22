@@ -6,6 +6,7 @@ $itemsWidth: 155px;
   margin-left: auto;
   margin-right: auto;
 }
+
 .movies-scroll{
   display: flex;
   overflow: scroll;
@@ -21,4 +22,8 @@ $itemsWidth: 155px;
 
 .box{
   width: 100%;
+
+  .title{
+    color: #ffffff;
+  }
 }
