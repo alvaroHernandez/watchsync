@@ -6,11 +6,12 @@ export default class RoomsClient {
 	}
 
 	updateHostId(roomId, movieUrl, hostId) {
-		return fetch(`${this.ROOM_PATH}${roomId}?movieUrl=${movieUrl}&hostId=${hostId}`,
-			{
-				method: 'put',
-				body: JSON.stringify({})
-			})
+		const options = {
+			method: 'PUT',
+			body: JSON.stringify({})
+		}
+
+		return fetch(`${this.ROOM_PATH}${roomId}?movieUrl=${movieUrl}&hostId=${hostId}`, options)
 			.then((result) => result.json())
 			.then((json) => json)
 	}
@@ -21,16 +22,19 @@ export default class RoomsClient {
 			.then((json) => json.room.hostId)
 	}
 
-	createIfDoesNotExists(roomId,movieUrl){
-		console.log("Rooms Client: attempt to create room: ",{ roomId,movieUrl} );
-		if(!roomId || !movieUrl){
-			console.log("Rooms Client: Invalid parameters");
+	createIfDoesNotExists(roomId, movieUrl) {
+		const options = {
+			method: 'POST',
+			body: JSON.stringify({})
 		}
-		return fetch(`${this.ROOM_PATH}${roomId}?movieUrl=${movieUrl}`,
-			{
-				method: 'POST',
-				body: JSON.stringify({})
-			})
+
+		console.info("Rooms Client: attempt to create room: ", { roomId, movieUrl})
+
+		if(!roomId || !movieUrl){
+			console.error("Rooms Client: Invalid parameters");
+		}
+
+		return fetch(`${this.ROOM_PATH}${roomId}?movieUrl=${movieUrl}`, options)
 			.then((result) => result.status)
 	}
 }
