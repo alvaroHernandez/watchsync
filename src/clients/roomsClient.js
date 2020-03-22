@@ -6,7 +6,7 @@ export default class RoomsClient {
 	}
 
 	updateHostId(roomId, movieUrl, hostId) {
-		return fetch(`${this.ROOM_PATH}${roomId}/movie/${movieUrl}?hostId=${hostId}`,
+		return fetch(`${this.ROOM_PATH}${roomId}?movieUrl=${movieUrl}&hostId=${hostId}`,
 			{
 				method: 'put',
 				body: JSON.stringify({})
@@ -16,7 +16,7 @@ export default class RoomsClient {
 	}
 
 	getHostId(roomId, movieUrl) {
-		return fetch(`${this.ROOM_PATH}${roomId}/movie/${movieUrl}`)
+		return fetch(`${this.ROOM_PATH}${roomId}?movieUrl=${movieUrl}`)
 			.then((result) => result.json())
 			.then((json) => json.hostId)
 	}
@@ -26,7 +26,7 @@ export default class RoomsClient {
 		if(!roomId || !movieUrl){
 			console.log("Rooms Client: Invalid parameters");
 		}
-		return fetch(`${this.ROOM_PATH}${roomId}/movie/${movieUrl}`,
+		return fetch(`${this.ROOM_PATH}${roomId}?movieUrl=${movieUrl}`,
 			{
 				method: 'POST',
 				body: JSON.stringify({})
