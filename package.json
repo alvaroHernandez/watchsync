@@ -29,6 +29,7 @@
     "react-dom": "^16.13.1",
     "sass": "^1.26.3",
     "serverless-mysql": "^1.5.3",
-    "sql-template-strings": "^2.2.2"
+    "sql-template-strings": "^2.2.2",
+    "uuid": "^7.0.2"
   }
 }
