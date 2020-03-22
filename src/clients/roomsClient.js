@@ -18,7 +18,7 @@ export default class RoomsClient {
 	getHostId(roomId, movieUrl) {
 		return fetch(`${this.ROOM_PATH}${roomId}?movieUrl=${movieUrl}`)
 			.then((result) => result.json())
-			.then((json) => json.hostId)
+			.then((json) => json.room.hostId)
 	}
 
 	createIfDoesNotExists(roomId,movieUrl){
