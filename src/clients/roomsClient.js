@@ -15,18 +15,13 @@ export default class RoomsClient {
 			.then((json) => json)
 	}
 
-	getHostId(roomId, movieUrl) {
-		return fetch(`${this.ROOM_PATH}${roomId}/movie/${movieUrl}?guestId=${hostId}`,
-			{
-				method: 'get',
-				body: JSON.stringify({})
-			})
+	getHostId(roomId, movieUrl, ) {
+		return fetch(`${this.ROOM_PATH}${roomId}/movie/${movieUrl}?guestId=`)
 			.then((result) => result.json())
-			.then((json) => json)
+			.then((json) => json.hostId)
 	}
 
 	createIfDoesNotExists(roomId,movieUrl){
-		console.log("creating", {roomId,movieUrl})
 		if(!roomId || !movieUrl){
 			return;
 		}

@@ -8,7 +8,6 @@ export default async (req, res) => {
           SELECT uuid from rooms
           WHERE uuid = ${req.query.roomId}
         `)
-        console.log(rooms);
         if(rooms .length === 0){
             console.log("empty");
             const rooms = await db.query(escape`
@@ -30,10 +29,14 @@ export default async (req, res) => {
         `)
         res.status(201).json({ rooms })
     }else if (req.method === 'GET') {
-        const rooms = await db.query(escape`
+        await db.query(escape`
           UPDATE rooms set guestId = ${req.query.guestId}
           WHERE uuid = ${req.query.roomId}
         `)
-        res.status(201).json({ rooms })
+        const rooms = await db.query(escape`
+          SELECT hostId from rooms
+          WHERE uuid = ${req.query.roomId}
+        `)
+        res.status(201).json(rooms[0])
     }
 }
