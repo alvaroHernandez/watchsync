@@ -1,10 +1,24 @@
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-const Movie = () => {
+import MoviesClient from '../../src/clients/moviesClient'
+
+const MovieContainer = () => {
   const router = useRouter()
   const { mid } = router.query
 
-  return <p>Movie: {mid}</p>
+  const moviesClient = new MoviesClient();
+  const [movie, setMovie] = useState(undefined)
+
+  useEffect(() => {
+  	mid && moviesClient.getMovie(mid).then(setMovie)
+  }, [mid])
+
+  return movie ? <Movie movie={movie} /> : null
 }
 
-export default Movie
+const Movie = ({movie}) => {
+	return (<video src={movie.link} controls width="350"></video>)
+}
+
+export default MovieContainer
