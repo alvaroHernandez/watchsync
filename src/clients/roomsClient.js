@@ -28,7 +28,7 @@ export default class RoomsClient {
 		}
 		return fetch(`${this.ROOM_PATH}${roomId}/movie/${movieUrl}`,
 			{
-				method: 'post',
+				method: 'POST',
 				body: JSON.stringify({})
 			})
 			.then((result) => result.status)
